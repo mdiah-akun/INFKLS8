@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cari Data? Auto Nemu! — Materi Siswa TP 1</title>
+<style>
+  :root{
+    --green:#1e7145; --green-dark:#123d28; --green-light:#e7f3ec;
+    --blue:#1f5c8b; --blue-light:#e4eef6;
+    --amber:#c97a00; --amber-light:#fff3cd;
+    --purple:#7a4fa3; --purple-light:#efe7f5;
+    --text:#222222; --muted:#666666;
+    --card:#f5f8f6; --card-border:#dbe8e0;
+    --bg:#ffffff; --maxw:860px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Calibri,'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+  img{max-width:100%;display:block;}
+
+  .editor-note{background:var(--amber-light);color:#6b4a00;font-size:13px;padding:10px 20px;text-align:center;}
+
+  .hero{background:radial-gradient(circle at 20% 20%, #1a5c3a, var(--green-dark) 70%);color:#fff;padding:56px 20px 42px;}
+  .hero .inner{max-width:var(--maxw);margin:0 auto;}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:1.5px;color:#a9dcc0;text-transform:uppercase;margin-bottom:10px;}
+  .hero h1{font-family:Cambria,Georgia,serif;font-size:38px;margin:0 0 12px;}
+  .hero p{font-size:16px;color:#d9edd1;margin:0;font-style:italic;}
+
+  nav.toc{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e5e5;overflow-x:auto;white-space:nowrap;z-index:10;padding:10px 20px;}
+  nav.toc a{color:var(--green-dark);text-decoration:none;font-size:13.5px;font-weight:600;margin-right:20px;}
+  nav.toc a:hover{text-decoration:underline;}
+
+  section{padding:36px 0;}
+  h2.kicker-h{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--amber);text-transform:uppercase;margin:0 0 8px;}
+  h2{font-family:Cambria,Georgia,serif;color:var(--green-dark);font-size:26px;margin:0 0 16px;}
+  h3{font-family:Cambria,Georgia,serif;color:var(--green-dark);font-size:19px;margin:22px 0 10px;}
+  p{font-size:15.5px;margin:0 0 14px;}
+
+  figure{margin:22px 0;text-align:center;}
+  figure img{border-radius:10px;margin:0 auto;}
+  figcaption{font-size:13px;color:var(--muted);font-style:italic;margin-top:8px;}
+
+  .formula{background:#1e1e1e;color:#f3f3f3;font-family:Consolas,monospace;font-size:15px;padding:16px 20px;border-radius:8px;overflow-x:auto;text-align:center;margin:16px 0;}
+
+  .result{background:var(--green-light);border-radius:10px;padding:18px 20px;text-align:center;margin:16px 0;}
+  .result .val{font-family:Cambria,Georgia,serif;font-size:28px;font-weight:700;color:var(--green-dark);}
+  .result .lbl{font-size:13px;color:var(--muted);margin-top:4px;}
+  .result.blue{background:var(--blue-light);} .result.blue .val{color:var(--blue);}
+
+  .callout{border-radius:10px;padding:18px 20px;margin:20px 0;}
+  .callout.amber{background:var(--amber-light);} .callout.blue{background:var(--blue-light);} .callout.green{background:var(--green-light);}
+  .callout .ttl{font-family:Cambria,Georgia,serif;font-weight:700;font-size:16.5px;color:var(--green-dark);margin-bottom:8px;}
+  .callout p{margin:0;font-size:14.5px;}
+
+  ul.tips{margin:0 0 14px;padding-left:22px;}
+  ul.tips li{font-size:15px;margin-bottom:6px;}
+
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:20px 0;}
+  .grid4 .card{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:16px;text-align:center;}
+  .grid4 .num{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 10px;font-family:Cambria,Georgia,serif;}
+  .grid4 .name{font-family:Cambria,Georgia,serif;font-weight:700;color:var(--green-dark);margin-bottom:6px;}
+  .grid4 .desc{font-size:12.5px;color:var(--muted);}
+
+  details{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 18px;margin-bottom:12px;}
+  summary{cursor:pointer;font-weight:600;color:var(--green);font-size:14.5px;}
+  .answer{margin-top:10px;font-size:14.5px;color:var(--text);}
+
+  table.glossary{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+  table.glossary th{background:var(--amber);color:#fff;text-align:left;padding:10px 12px;}
+  table.glossary td{padding:10px 12px;border-bottom:1px solid #eee;}
+  table.glossary tr:nth-child(even) td{background:#fafafa;}
+  table.glossary td:first-child{font-weight:700;color:var(--green-dark);white-space:nowrap;}
+
+  footer{text-align:center;padding:30px 20px 50px;color:var(--muted);font-size:13px;}
+  .back-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--green-dark);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,0.25);}
+
+  @media(max-width:600px){ .hero h1{font-size:28px;} h2{font-size:22px;} }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="inner">
+    <div class="kicker">Informatika Kelas VIII &middot; Bab I Analisis Data &middot; TP 1</div>
+    <h1>Cari Data? Auto Nemu!</h1>
+    <p>Kenalan sama VLOOKUP, HLOOKUP, MATCH, INDEX, dan CHOOSE — lewat studi kasus Koperasi Sekolah.</p>
+  </div>
+</div>
+
+<nav class="toc">
+  <a href="#hook">Cerita Pembuka</a>
+  <a href="#dataset">Dataset</a>
+  <a href="#vlookup">VLOOKUP</a>
+  <a href="#hlookup">HLOOKUP</a>
+  <a href="#matchindex">MATCH &amp; INDEX</a>
+  <a href="#choose">CHOOSE</a>
+  <a href="#rangkuman">Rangkuman</a>
+  <a href="#uji-diri">Uji Diri</a>
+  <a href="#kamus">Kamus Kilat</a>
+</nav>
+
+<div class="wrap">
+
+<section id="hook">
+  <h2 class="kicker-h">Cerita Pembuka</h2>
+  <h2>Pernah Jadi "Kasir Dadakan"?</h2>
+  <p>Coba bayangin: kalian lagi jaga koperasi sekolah, terus ada 300 produk di rak. Tiba-tiba ada yang tanya, "Harga Air Mineral 600ml berapa ya?" Masa iya kalian harus buka buku catatan terus scroll satu-satu dari atas sampai bawah? Belum lagi kalau ada temen lain nanya produk yang beda lagi. Bisa-bisa antrean ngular sampai keluar kelas!</p>
+  <p>Nah, di dunia pengolah lembar kerja (Excel, Google Sheets, dsb.), ada beberapa fungsi "pencari data" yang bisa bantu kita nemuin informasi secepat kilat, tinggal ketik kata kuncinya aja. Yuk kenalan sama VLOOKUP, HLOOKUP, MATCH, INDEX, dan CHOOSE!</p>
+  <figure>
+    <img src="../images/img2_before_after.png" alt="Cari manual vs cari otomatis">
+    <figcaption>Bedanya cari manual vs cari otomatis pakai fungsi pencarian data</figcaption>
+  </figure>
+</section>
+
+<section id="dataset">
+  <h2 class="kicker-h">Dataset Kita</h2>
+  <h2>Kenalan Sama Datanya Dulu</h2>
+  <p>Semua contoh di materi ini bakal pakai data "Koperasi Sekolah SMPN 14 Tarakan" — ada 10 produk, dari alat tulis sampai jajanan. Simpan gambar ini baik-baik di kepala kalian, soalnya bakal sering muncul lagi!</p>
+  <figure>
+    <img src="../images/img1_dataset.png" alt="Dataset Koperasi Sekolah">
+    <figcaption>Dataset Koperasi Sekolah SMPN 14 Tarakan</figcaption>
+  </figure>
+</section>
+
+<section id="vlookup">
+  <h2 class="kicker-h">Fungsi Pertama</h2>
+  <h2>VLOOKUP — Cari ke BAWAH</h2>
+  <p>VLOOKUP itu singkatan dari <em>Vertical Lookup</em> alias "cari secara vertikal". Cocok banget dipakai kalau data kalian tersusun ke BAWAH (dalam kolom), dan kata kunci pencarian ada di kolom PALING KIRI tabel — persis seperti dataset Koperasi Sekolah kita, di mana kolom Kode ada paling kiri.</p>
+  <p>Misalnya kita mau cari harga barang dengan kode "K07" (Air Mineral 600ml). Formulanya begini:</p>
+  <div class="formula">=VLOOKUP("K07", A2:D11, 4, FALSE)</div>
+  <figure>
+    <img src="../images/img3_vlookup_anatomy.png" alt="Anatomi formula VLOOKUP">
+    <figcaption>Anatomi formula VLOOKUP — tiap bagian formula ada tugasnya sendiri</figcaption>
+  </figure>
+  <p>Coba kita bedah satu-satu:</p>
+  <ul class="tips">
+    <li><strong>"K07"</strong> — ini kode barang yang mau kita cari.</li>
+    <li><strong>A2:D11</strong> — ini tabel tempat kita mencari (kolom pertama, yaitu Kode, harus jadi kunci pencariannya).</li>
+    <li><strong>4</strong> — ini nomor kolom yang hasilnya mau diambil (kolom ke-4 dari tabel = Harga).</li>
+    <li><strong>FALSE</strong> — artinya kita mau hasil yang PERSIS sama (exact match), bukan perkiraan.</li>
+  </ul>
+  <div class="result"><div class="val">Rp 4.000</div><div class="lbl">Harga Air Mineral 600ml</div></div>
+  <div class="callout amber">
+    <div class="ttl">💡 Tips: Jangan Lupa FALSE!</div>
+    <p>Kalau argumen terakhir dilupakan atau diisi TRUE, VLOOKUP akan mencari nilai yang MENDEKATI, bukan yang PERSIS sama. Untuk kasus kode barang seperti ini, selalu pakai FALSE (atau angka 0) supaya hasilnya akurat.</p>
+  </div>
+</section>
+
+<section id="hlookup">
+  <h2 class="kicker-h">Fungsi Kedua</h2>
+  <h2>HLOOKUP — Cari ke SAMPING</h2>
+  <p>Kalau VLOOKUP mencari ke bawah, HLOOKUP (<em>Horizontal Lookup</em>) itu kebalikannya — mencari ke SAMPING (dalam baris). Cocok dipakai kalau data kalian tersusun mendatar, dan kata kunci pencarian ada di baris PALING ATAS tabel.</p>
+  <p>Contohnya, kelas VIII-A punya jadwal piket yang disusun horizontal seperti ini:</p>
+  <figure>
+    <img src="../images/img4_hlookup.png" alt="Contoh HLOOKUP pada Jadwal Piket">
+    <figcaption>Jadwal Piket Kelas VIII-A dan contoh HLOOKUP</figcaption>
+  </figure>
+  <p>Kalau kita mau tahu siapa yang piket hari Rabu, formulanya:</p>
+  <div class="formula">=HLOOKUP("Rabu", B1:F2, 2, FALSE)</div>
+  <p>Sama seperti VLOOKUP, angka "2" di sini artinya kita mengambil data dari BARIS ke-2 (nama siswa), setelah menemukan "Rabu" di baris pertama.</p>
+  <div class="result blue"><div class="val">Citra</div><div class="lbl">Siswa piket hari Rabu</div></div>
+</section>
+
+<section id="matchindex">
+  <h2 class="kicker-h">Fungsi Ketiga &amp; Keempat</h2>
+  <h2>MATCH &amp; INDEX — Duo yang Fleksibel</h2>
+  <p>VLOOKUP memang praktis, tapi ada kelemahannya: kolom kunci pencarian HARUS ada di paling kiri. Nah, kalau kita butuh yang lebih fleksibel, kita bisa pakai kombinasi MATCH + INDEX.</p>
+  <p>MATCH bertugas mencari POSISI (nomor urut) suatu data. Misalnya kita mau tahu K07 itu ada di urutan ke berapa:</p>
+  <div class="formula">=MATCH("K07", A2:A11, 0)&nbsp;&nbsp;&rarr;&nbsp;&nbsp;7</div>
+  <p>Nah, setelah tahu posisinya (urutan ke-7), INDEX bertugas mengambil NILAI dari posisi tersebut:</p>
+  <div class="formula">=INDEX(D2:D11, MATCH("K07", A2:A11, 0))&nbsp;&nbsp;&rarr;&nbsp;&nbsp;4.000</div>
+  <figure>
+    <img src="../images/img5_match_index.png" alt="MATCH mencari posisi, INDEX mengambil nilai">
+    <figcaption>MATCH mencari posisi, INDEX mengambil nilai pada posisi itu</figcaption>
+  </figure>
+  <p>Hasilnya sama persis dengan VLOOKUP tadi (Rp 4.000), tapi caranya lebih fleksibel — INDEX+MATCH bisa dipakai walaupun kolom kuncinya ada di sebelah KANAN kolom hasil, sesuatu yang tidak bisa dilakukan VLOOKUP biasa.</p>
+  <div class="callout blue">
+    <div class="ttl">🤔 Tau Nggak?</div>
+    <p>INDEX artinya "posisi/indeks", dan MATCH artinya "mencocokkan". Jadi INDEX+MATCH itu ibarat kerja tim: MATCH jadi detektif yang nyari lokasi datanya, lalu INDEX jadi kurir yang ngambilin nilainya dari lokasi tersebut.</p>
+  </div>
+</section>
+
+<section id="choose">
+  <h2 class="kicker-h">Fungsi Kelima</h2>
+  <h2>CHOOSE — Milih dari Daftar Pendek</h2>
+  <p>Beda dari yang lain, CHOOSE nggak nyari data dari tabel besar. CHOOSE dipakai untuk memilih SATU nilai dari daftar pendek, berdasarkan nomor urut (index) yang kita kasih.</p>
+  <p>Misalnya, koperasi mau kasih diskon berbeda tiap kategori: kategori ke-1 dapat "Diskon 5%", kategori ke-2 dapat "Diskon 10%", dan kategori ke-3 "Tanpa Diskon". Kalau produk yang kita cek ada di kategori ke-2 (Minuman), formulanya:</p>
+  <div class="formula">=CHOOSE(2, "Diskon 5%", "Diskon 10%", "Tanpa Diskon")</div>
+  <figure>
+    <img src="../images/img6_choose.png" alt="CHOOSE memilih dari daftar">
+    <figcaption>CHOOSE memilih nilai dari daftar berdasarkan nomor indeks</figcaption>
+  </figure>
+  <div class="result"><div class="val">"Diskon 10%"</div><div class="lbl">Karena angka 2 = urutan kedua dalam daftar</div></div>
+  <div class="callout amber">
+    <div class="ttl">💡 Tips: Kombinasikan!</div>
+    <p>CHOOSE makin seru kalau digabung sama MATCH. Contoh: <code>=CHOOSE(MATCH(C2,{"Alat Tulis";"Minuman";"Makanan"},0), "Diskon 5%", "Diskon 10%", "Tanpa Diskon")</code> — jadi nomor indeksnya otomatis dicari, nggak perlu diketik manual satu-satu!</p>
+  </div>
+</section>
+
+<section id="rangkuman">
+  <h2 class="kicker-h">Sebelum Praktik</h2>
+  <h2>Rangkuman: Kapan Pakai yang Mana?</h2>
+  <figure>
+    <img src="../images/img7_decision_map.png" alt="Peta keputusan fungsi pencarian data">
+    <figcaption>Peta keputusan: kapan menggunakan VLOOKUP, HLOOKUP, INDEX+MATCH, atau CHOOSE</figcaption>
+  </figure>
+  <div class="callout green">
+    <div class="ttl">🚀 Yuk, Coba Sendiri!</div>
+    <p>Sekarang giliran kalian praktik langsung! Buka LKPD "Pencarian Data Koperasi Sekolah" dan kerjakan bareng kelompok kalian. Jangan takut salah — coba-coba itu bagian dari belajar!</p>
+  </div>
+</section>
+
+<section id="uji-diri">
+  <h2 class="kicker-h">Cek Pemahaman</h2>
+  <h2>Yuk, Uji Diri Kalian!</h2>
+  <p style="font-style:italic;color:var(--muted);">Coba jawab dulu tanpa buka catatan. Klik "Lihat Jawaban" kalau sudah yakin dengan jawaban kalian.</p>
+
+  <details><summary>1. Fungsi apa yang dipakai untuk mencari data secara VERTIKAL (ke bawah)?</summary><div class="answer">VLOOKUP</div></details>
+  <details><summary>2. Fungsi apa yang dipakai untuk mencari data secara HORIZONTAL (ke samping)?</summary><div class="answer">HLOOKUP</div></details>
+  <details><summary>3. Fungsi apa yang mencari POSISI suatu data dalam kolom/baris?</summary><div class="answer">MATCH</div></details>
+  <details><summary>4. Fungsi apa yang mengambil NILAI berdasarkan posisi tertentu, biasanya digabung dengan MATCH?</summary><div class="answer">INDEX</div></details>
+  <details><summary>5. Fungsi apa yang memilih satu nilai dari daftar pendek berdasarkan nomor urut?</summary><div class="answer">CHOOSE</div></details>
+</section>
+
+<section id="kamus">
+  <h2 class="kicker-h">Referensi Cepat</h2>
+  <h2>Kamus Kilat</h2>
+  <table class="glossary">
+    <tr><th>Istilah</th><th>Penjelasan</th></tr>
+    <tr><td>VLOOKUP</td><td>Mencari data secara vertikal (kolom), kunci pencarian di kolom paling kiri.</td></tr>
+    <tr><td>HLOOKUP</td><td>Mencari data secara horizontal (baris), kunci pencarian di baris paling atas.</td></tr>
+    <tr><td>MATCH</td><td>Mencari posisi/urutan suatu data di dalam kolom atau baris.</td></tr>
+    <tr><td>INDEX</td><td>Mengambil nilai dari suatu posisi baris/kolom tertentu.</td></tr>
+    <tr><td>CHOOSE</td><td>Memilih satu nilai dari daftar pendek berdasarkan nomor indeks.</td></tr>
+    <tr><td>Exact Match</td><td>Mode pencarian yang hasilnya harus PERSIS sama (pakai FALSE atau 0).</td></tr>
+  </table>
+</section>
+
+</div>
+
+<footer>Materi Siswa &middot; Informatika Kelas VIII &middot; Bab I Analisis Data &middot; TP 1</footer>
+<a class="back-top" href="#">&uarr;</a>
+
+</body>
+</html>
