@@ -108,7 +108,7 @@
   <p>Coba bayangin: kalian lagi jaga koperasi sekolah, terus ada 300 produk di rak. Tiba-tiba ada yang tanya, "Harga Air Mineral 600ml berapa ya?" Masa iya kalian harus buka buku catatan terus scroll satu-satu dari atas sampai bawah? Belum lagi kalau ada temen lain nanya produk yang beda lagi. Bisa-bisa antrean ngular sampai keluar kelas!</p>
   <p>Nah, di dunia pengolah lembar kerja (Excel, Google Sheets, dsb.), ada beberapa fungsi "pencari data" yang bisa bantu kita nemuin informasi secepat kilat, tinggal ketik kata kuncinya aja. Yuk kenalan sama VLOOKUP, HLOOKUP, MATCH, INDEX, dan CHOOSE!</p>
   <figure>
-    <img src="../images/img2_before_after.png" alt="Cari manual vs cari otomatis">
+    <img src="../images/bab1/tp1/img2_before_after.png" alt="Cari manual vs cari otomatis">
     <figcaption>Bedanya cari manual vs cari otomatis pakai fungsi pencarian data</figcaption>
   </figure>
 </section>
@@ -118,7 +118,7 @@
   <h2>Kenalan Sama Datanya Dulu</h2>
   <p>Semua contoh di materi ini bakal pakai data "Koperasi Sekolah SMPN 14 Tarakan" — ada 10 produk, dari alat tulis sampai jajanan. Simpan gambar ini baik-baik di kepala kalian, soalnya bakal sering muncul lagi!</p>
   <figure>
-    <img src="../images/img1_dataset.png" alt="Dataset Koperasi Sekolah">
+    <img src="../images/bab1/tp1/img1_dataset.png" alt="Dataset Koperasi Sekolah">
     <figcaption>Dataset Koperasi Sekolah SMPN 14 Tarakan</figcaption>
   </figure>
 </section>
@@ -130,7 +130,7 @@
   <p>Misalnya kita mau cari harga barang dengan kode "K07" (Air Mineral 600ml). Formulanya begini:</p>
   <div class="formula">=VLOOKUP("K07", A2:D11, 4, FALSE)</div>
   <figure>
-    <img src="../images/img3_vlookup_anatomy.png" alt="Anatomi formula VLOOKUP">
+    <img src="../images/bab1/tp1/img3_vlookup_anatomy.png" alt="Anatomi formula VLOOKUP">
     <figcaption>Anatomi formula VLOOKUP — tiap bagian formula ada tugasnya sendiri</figcaption>
   </figure>
   <p>Coba kita bedah satu-satu:</p>
@@ -153,7 +153,7 @@
   <p>Kalau VLOOKUP mencari ke bawah, HLOOKUP (<em>Horizontal Lookup</em>) itu kebalikannya — mencari ke SAMPING (dalam baris). Cocok dipakai kalau data kalian tersusun mendatar, dan kata kunci pencarian ada di baris PALING ATAS tabel.</p>
   <p>Contohnya, kelas VIII-A punya jadwal piket yang disusun horizontal seperti ini:</p>
   <figure>
-    <img src="../images/img4_hlookup.png" alt="Contoh HLOOKUP pada Jadwal Piket">
+    <img src="../images/bab1/tp1/img4_hlookup.png" alt="Contoh HLOOKUP pada Jadwal Piket">
     <figcaption>Jadwal Piket Kelas VIII-A dan contoh HLOOKUP</figcaption>
   </figure>
   <p>Kalau kita mau tahu siapa yang piket hari Rabu, formulanya:</p>
@@ -171,7 +171,7 @@
   <p>Nah, setelah tahu posisinya (urutan ke-7), INDEX bertugas mengambil NILAI dari posisi tersebut:</p>
   <div class="formula">=INDEX(D2:D11, MATCH("K07", A2:A11, 0))&nbsp;&nbsp;&rarr;&nbsp;&nbsp;4.000</div>
   <figure>
-    <img src="../images/img5_match_index.png" alt="MATCH mencari posisi, INDEX mengambil nilai">
+    <img src="../images/bab1/tp1/img5_match_index.png" alt="MATCH mencari posisi, INDEX mengambil nilai">
     <figcaption>MATCH mencari posisi, INDEX mengambil nilai pada posisi itu</figcaption>
   </figure>
   <p>Hasilnya sama persis dengan VLOOKUP tadi (Rp 4.000), tapi caranya lebih fleksibel — INDEX+MATCH bisa dipakai walaupun kolom kuncinya ada di sebelah KANAN kolom hasil, sesuatu yang tidak bisa dilakukan VLOOKUP biasa.</p>
@@ -188,7 +188,7 @@
   <p>Misalnya, koperasi mau kasih diskon berbeda tiap kategori: kategori ke-1 dapat "Diskon 5%", kategori ke-2 dapat "Diskon 10%", dan kategori ke-3 "Tanpa Diskon". Kalau produk yang kita cek ada di kategori ke-2 (Minuman), formulanya:</p>
   <div class="formula">=CHOOSE(2, "Diskon 5%", "Diskon 10%", "Tanpa Diskon")</div>
   <figure>
-    <img src="../images/img6_choose.png" alt="CHOOSE memilih dari daftar">
+    <img src="../images/bab1/tp1/img6_choose.png" alt="CHOOSE memilih dari daftar">
     <figcaption>CHOOSE memilih nilai dari daftar berdasarkan nomor indeks</figcaption>
   </figure>
   <div class="result"><div class="val">"Diskon 10%"</div><div class="lbl">Karena angka 2 = urutan kedua dalam daftar</div></div>
@@ -202,7 +202,7 @@
   <h2 class="kicker-h">Sebelum Praktik</h2>
   <h2>Rangkuman: Kapan Pakai yang Mana?</h2>
   <figure>
-    <img src="../images/img7_decision_map.png" alt="Peta keputusan fungsi pencarian data">
+    <img src="../images/bab1/tp1/img7_decision_map.png" alt="Peta keputusan fungsi pencarian data">
     <figcaption>Peta keputusan: kapan menggunakan VLOOKUP, HLOOKUP, INDEX+MATCH, atau CHOOSE</figcaption>
   </figure>
   <div class="callout green">
