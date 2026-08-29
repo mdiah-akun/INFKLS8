@@ -112,7 +112,7 @@
   <p>Minggu lalu kalian udah belajar VLOOKUP, HLOOKUP, MATCH, INDEX, dan CHOOSE — keren banget, sekarang kalian udah bisa bikin "mesin pencari" sendiri di spreadsheet. Tapi ternyata, jadi kasir dadakan aja belum cukup. Sekarang giliran kalian naik jabatan jadi Tim IT Koperasi Sekolah!</p>
   <p>Kenapa? Soalnya sistem pencarian yang kemarin dibuat, walaupun udah jalan, ternyata masih rapuh. Ada 4 masalah yang bikin pengurus koperasi pusing:</p>
   <figure>
-    <img src="images/img1_orientasi_masalah.png" alt="Empat masalah sistem pencarian koperasi">
+    <img src="images/bab1/tp1b/img1_orientasi_masalah.png" alt="Empat masalah sistem pencarian koperasi">
     <figcaption>Empat masalah nyata yang harus dibenahi Tim IT Koperasi hari ini</figcaption>
   </figure>
   <p>Nah, di materi ini kita bakal bereskan satu-satu masalah itu. Siap-siap, karena kali ini bakal lebih banyak praktik langsung di laptop!</p>
@@ -124,7 +124,7 @@
   <p>Pernah nggak lihat sel di Excel yang isinya cuma tulisan "#N/A"? Itu bukan bug aneh, itu cara Excel bilang "aduh, aku nggak nemu datanya nih". Biasanya muncul kalau kode yang dicari salah ketik, atau memang belum ada di data.</p>
   <p>Masalahnya, tampilan #N/A itu bikin bingung orang yang pakai file kita — apalagi kalau yang pakai bukan anak IT. Makanya kita butuh fungsi IFERROR buat "menjinakkan" error itu jadi pesan yang lebih enak dibaca.</p>
   <figure>
-    <img src="images/img2_iferror.png" alt="IFERROR mengubah #N/A jadi pesan ramah">
+    <img src="images/bab1/tp1b/img2_iferror.png" alt="IFERROR mengubah #N/A jadi pesan ramah">
     <figcaption>IFERROR mengubah #N/A jadi pesan yang lebih ramah</figcaption>
   </figure>
   <p>Coba bandingkan dua formula ini buat cari kode "K15" (yang emang nggak ada di data kita):</p>
@@ -142,7 +142,7 @@
   <h2>Awas, Tabelnya Berubah!</h2>
   <p>Bayangin gini: kalian udah capek-capek bikin formula VLOOKUP yang jalan sempurna. Terus tiba-tiba pengurus koperasi minta ditambahin kolom "Stok" di sebelah kiri kolom Kode. Eh, formula yang tadinya benar, sekarang malah nunjukkin angka yang salah! Kok bisa?</p>
   <figure>
-    <img src="images/img3_robustness.png" alt="VLOOKUP rusak vs INDEX+MATCH tetap benar">
+    <img src="images/bab1/tp1b/img3_robustness.png" alt="VLOOKUP rusak vs INDEX+MATCH tetap benar">
     <figcaption>VLOOKUP jadi salah, tapi INDEX+MATCH tetap benar, saat kolom baru disisipkan</figcaption>
   </figure>
   <p>Ternyata, VLOOKUP itu "menghitung" kolom hasilnya berdasarkan NOMOR URUT (misalnya angka 4 = kolom keempat). Begitu ada kolom baru nyelip, nomor urutnya ikut geser, jadi hasilnya salah — padahal formulanya nggak diubah sama sekali!</p>
@@ -159,13 +159,13 @@
   <h2>Barangnya Sama, Tapi Beda Toko</h2>
   <p>Ternyata koperasi sekolah kita belanja dari dua supplier: UD Sinar Jaya dan UD Makmur. Masalahnya, ada barang yang namanya SAMA tapi harganya BEDA, tergantung dari supplier mana.</p>
   <figure>
-    <img src="images/img4a_supplier_raw.png" alt="Data katalog supplier">
+    <img src="images/bab1/tp1b/img4a_supplier_raw.png" alt="Data katalog supplier">
     <figcaption>Data katalog supplier: nama barang yang sama, harga berbeda tergantung supplier</figcaption>
   </figure>
   <p>Kalau kita cuma VLOOKUP pakai "Pensil 2B" aja, Excel bakal bingung — mau ambil harga dari UD Sinar Jaya atau UD Makmur? Di sinilah kita butuh pencarian dengan DUA kriteria sekaligus: Nama Barang DAN Supplier.</p>
   <p>Triknya gampang kok — kita bikin "kolom bantu" yang menggabungkan dua kriteria itu jadi satu kunci pencarian, pakai tanda "&":</p>
   <figure>
-    <img src="images/img4b_helper_column.png" alt="Teknik kolom bantu">
+    <img src="images/bab1/tp1b/img4b_helper_column.png" alt="Teknik kolom bantu">
     <figcaption>Teknik kolom bantu: menggabungkan dua kriteria jadi satu kunci pencarian</figcaption>
   </figure>
   <div class="formula">Kolom Bantu: &nbsp;=B2 &amp; "|" &amp; C2</div>
@@ -178,7 +178,7 @@
   <h2>Diskon Naik Level: Beda-beda Tergantung Belanja</h2>
   <p>Koperasi mau kasih diskon otomatis, tapi bukan diskon yang sama rata — makin banyak belanja, makin gede diskonnya. Ini yang disebut diskon BERTINGKAT (berjenjang).</p>
   <figure>
-    <img src="images/img5_tiered_discount.png" alt="VLOOKUP TRUE tabel diskon bertingkat">
+    <img src="images/bab1/tp1b/img5_tiered_discount.png" alt="VLOOKUP TRUE tabel diskon bertingkat">
     <figcaption>VLOOKUP TRUE mencari nilai terdekat di tabel diskon bertingkat</figcaption>
   </figure>
   <p>Nah, di sinilah argumen terakhir VLOOKUP yang biasanya kita isi FALSE, sekarang kita ganti jadi TRUE. Bedanya:</p>
@@ -198,7 +198,7 @@
   <h2>Saatnya Bikin Dashboard Sendiri!</h2>
   <p>Sekarang kalian udah punya 4 "senjata" baru: IFERROR, INDEX+MATCH yang tahan perubahan tabel, teknik kolom bantu, dan VLOOKUP TRUE. Saatnya gabungin semuanya jadi satu "Dashboard Pencarian" keren buat Koperasi Sekolah!</p>
   <figure>
-    <img src="images/img6_dashboard_mockup.png" alt="Dashboard Pencarian Koperasi">
+    <img src="images/bab1/tp1b/img6_dashboard_mockup.png" alt="Dashboard Pencarian Koperasi">
     <figcaption>Contoh Dashboard Pencarian yang jadi target proyek kalian hari ini</figcaption>
   </figure>
   <p>Idenya sederhana: cukup ketik kode barang di satu kotak, semua info (nama, kategori, harga) langsung muncul otomatis — dan kalau kodenya salah, muncul pesan yang jelas, bukan #N/A. Plus, ketik total belanja, diskonnya langsung kehitung sendiri!</p>
