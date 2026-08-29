@@ -17,8 +17,6 @@
     --muted:#6b7472;
     --card:#f5f8f6;
     --card-border:#dbe8e0;
-    --ph-border:#b9c4c0;
-    --ph-bg:#eef2f1;
     --maxw:840px;
   }
   *{box-sizing:border-box;}
@@ -31,22 +29,6 @@
     line-height:1.6;
   }
   a{color:var(--green);}
-
-  /* ---------- top instruction banner (for the editor, not students) ---------- */
-  .editor-note{
-    background:var(--amber-light);
-    border-bottom:1px solid #f0d78a;
-    color:#7a5400;
-    font-size:13.5px;
-    padding:10px 20px;
-    text-align:center;
-  }
-  .editor-note code{
-    background:#00000010;
-    padding:1px 6px;
-    border-radius:4px;
-    font-size:12.5px;
-  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -121,33 +103,16 @@
   .lead{ font-size:16.5px; }
 
   /* ---------- image placeholder (the "canvas") ---------- */
-  .img-slot{
-    border:2px dashed var(--ph-border);
-    background:var(--ph-bg);
-    border-radius:14px;
-    padding:22px;
-    margin:20px 0;
-    text-align:center;
-    color:var(--muted);
-  }
-  .img-slot .num{
-    display:inline-flex; align-items:center; justify-content:center;
-    width:30px; height:30px; border-radius:50%;
-    background:#ffffff; border:2px solid var(--ph-border);
-    font-weight:700; font-size:13px; color:var(--text);
-    margin-bottom:10px;
-  }
-  .img-slot .label{ font-weight:700; font-size:14.5px; color:var(--text); margin-bottom:4px; }
-  .img-slot .hint{ font-size:12.5px; color:var(--muted); margin-bottom:2px; }
-  .img-slot .filename{
-    display:inline-block; margin-top:8px; font-family: Consolas, "Courier New", monospace;
-    font-size:11.5px; background:#ffffff; border:1px solid #dfe6e3; border-radius:6px;
-    padding:3px 9px; color:#4a534f;
-  }
-  .img-slot.ratio-wide{ aspect-ratio: 16/7; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .img-slot.ratio-square{ aspect-ratio: 4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; max-width:520px; margin-left:auto; margin-right:auto; }
-  .img-slot.ratio-tall{ aspect-ratio: 4/5; display:flex; flex-direction:column; align-items:center; justify-content:center; max-width:420px; margin-left:auto; margin-right:auto; }
   .img-caption{ text-align:center; font-size:12.5px; font-style:italic; color:var(--muted); margin-top:-10px; margin-bottom:24px; }
+
+  /* ---------- figures ---------- */
+  figure.fig{ margin:20px 0 0; }
+  figure.fig.ratio-square, figure.fig.ratio-tall{ max-width:520px; margin-left:auto; margin-right:auto; }
+  figure.fig.ratio-tall{ max-width:420px; }
+  figure.fig img{
+    display:block; width:100%; height:auto; border-radius:14px;
+    border:1px solid var(--card-border); box-shadow:0 2px 12px #00000014;
+  }
 
   /* ---------- formula box ---------- */
   .formula{
@@ -235,11 +200,6 @@
 </head>
 <body>
 
-<div class="editor-note">
-  Halaman ini adalah <strong>canvas</strong> materi siswa — 8 slot gambar ditandai kotak putus-putus.
-  Cari komentar <code>&lt;!-- GAMBAR N --&gt;</code> di kode HTML, lalu ganti isi <code>&lt;div class="img-slot"&gt;...&lt;/div&gt;</code> dengan tag <code>&lt;img src="nama-file.png" alt="..."&gt;</code>.
-</div>
-
 <header class="hero">
   <p class="kicker">Informatika Kelas VIII · Bab I Analisis Data · TP 3</p>
   <h1>Meringkas Data? Gampang Kok!</h1>
@@ -269,12 +229,10 @@
     <p>Masa iya kalian harus baca satu-satu, terus jumlahin manual pakai kalkulator? Kebayang kan capeknya kalau datanya bukan 16 baris, tapi 16.000 baris? Nah, di sinilah SUMIFS, COUNTIFS, dan Pivot Table jadi penyelamat kalian. Yuk, kita bahas satu-satu, santai aja!</p>
 
     <!-- GAMBAR 1: Data mentah vs sudah diringkas (before/after) -->
-    <div class="img-slot ratio-wide">
-      <div class="num">1</div>
-      <div class="label">Ilustrasi: Data Mentah vs Sudah Diringkas</div>
-      <div class="hint">Perbandingan visual — 16 baris berantakan di kiri, 4 baris ringkasan rapi di kanan</div>
-      <span class="filename">gambar-1-before-after.png</span>
-    </div>
+    <figure class="fig ratio-wide">
+      <img src="images/bab1/tp3/gambar-1-before-after.png" alt="Perbandingan data mentah 16 baris di kiri dengan data yang sudah diringkas per Kabupaten/Kota di kanan">
+    </figure>
+    <p class="img-caption">Data mentah 16 baris → diringkas jadi 4 baris pakai SUMIFS / Pivot Table</p>
   </section>
 
   <section id="kenapa">
@@ -283,12 +241,10 @@
     <p>Data mentah itu lengkap, tapi justru karena lengkap, dia jadi susah dibaca sekilas. Coba deh bayangin kalau kalian harus nyari informasi penting dari ratusan baris angka — pasti pusing! Makanya, data itu perlu “disaring” dulu pakai kriteria tertentu, baru deh keluar hasil yang benar-benar penting.</p>
 
     <!-- GAMBAR 2: Corong / funnel peringkasan data -->
-    <div class="img-slot ratio-tall">
-      <div class="num">2</div>
-      <div class="label">Ilustrasi: Corong Peringkasan Data</div>
-      <div class="hint">Data mentah → disaring pakai kriteria → hasil ringkas</div>
-      <span class="filename">gambar-2-funnel.png</span>
-    </div>
+    <figure class="fig ratio-tall">
+      <img src="images/bab1/tp3/gambar-2-funnel.png" alt="Corong peringkasan data: 16 baris data mentah, disaring pakai kriteria Kabupaten/Kota dan Tahun, hasilnya 2 baris data dengan total 6.300 wisatawan">
+    </figure>
+    <p class="img-caption">Data mentah → disaring pakai kriteria → hasil ringkas</p>
 
     <p>Ada tiga cara utama buat meringkas data yang bakal kita pelajari di bab ini:</p>
     <ul>
@@ -307,24 +263,20 @@
     <p>Coba kita praktikkan pakai data wisatawan Kalimantan Utara berikut ini.</p>
 
     <!-- GAMBAR 3: Dataset kunjungan wisatawan Kalimantan Utara -->
-    <div class="img-slot ratio-square">
-      <div class="num">3</div>
-      <div class="label">Dataset: Kunjungan Wisatawan Kalimantan Utara</div>
-      <div class="hint">Tabel A1:D17 — Destinasi Wisata, Kabupaten/Kota, Tahun, Jumlah Wisatawan</div>
-      <span class="filename">gambar-3-dataset.png</span>
-    </div>
+    <figure class="fig ratio-square">
+      <img src="images/bab1/tp3/gambar-3-dataset.png" alt="Tabel dataset kunjungan wisatawan Kalimantan Utara, 16 baris: Destinasi Wisata, Kabupaten/Kota, Tahun, Jumlah Wisatawan">
+    </figure>
+    <p class="img-caption">Tabel A1:D17 — Destinasi Wisata, Kabupaten/Kota, Tahun, Jumlah Wisatawan</p>
 
     <p>Misalnya kita mau tahu: <em>“Berapa total wisatawan yang datang ke Tarakan pada tahun 2024?”</em> Ada dua syarat di sini: kabupaten/kotanya harus Tarakan, DAN tahunnya harus 2024. Formulanya:</p>
 
     <div class="formula">=SUMIFS(<span class="arg-a">D2:D17</span>, <span class="arg-b">B2:B17</span>, <span class="arg-c">"Tarakan"</span>, <span class="arg-b">C2:C17</span>, <span class="arg-c">2024</span>)</div>
 
     <!-- GAMBAR 4: Kriteria & hasil SUMIFS/COUNTIFS -->
-    <div class="img-slot ratio-wide">
-      <div class="num">4</div>
-      <div class="label">Kriteria &amp; Hasil SUMIFS / COUNTIFS</div>
-      <div class="hint">Tabel kecil menunjukkan kriteria (Tarakan, 2024) dan hasilnya (6.300 dan 2)</div>
-      <span class="filename">gambar-4-hasil-formula.png</span>
-    </div>
+    <figure class="fig ratio-wide">
+      <img src="images/bab1/tp3/gambar-4-hasil-formula.png" alt="Kriteria Kabupaten/Kota = Tarakan dan Tahun = 2024, dengan hasil SUMIFS 6.300 dan hasil COUNTIFS 2">
+    </figure>
+    <p class="img-caption">Kriteria (Tarakan, 2024) dan hasilnya: SUMIFS = 6.300, COUNTIFS = 2</p>
 
     <div class="result-box">
       <div class="num">6.300</div>
@@ -363,12 +315,10 @@
     </div>
 
     <!-- GAMBAR 5: Kartu perbandingan SUMIFS vs COUNTIFS -->
-    <div class="img-slot ratio-wide">
-      <div class="num">5</div>
-      <div class="label">Kartu Perbandingan: SUMIFS vs COUNTIFS</div>
-      <div class="hint">Ringkasan visual biar makin nempel di kepala</div>
-      <span class="filename">gambar-5-kartu-perbandingan.png</span>
-    </div>
+    <figure class="fig ratio-wide">
+      <img src="images/bab1/tp3/gambar-5-kartu-perbandingan.png" alt="Kartu perbandingan SUMIFS dan COUNTIFS beserta sintaksnya">
+    </figure>
+    <p class="img-caption">Ringkasan visual: SUMIFS vs COUNTIFS</p>
   </section>
 
   <section id="pivot">
@@ -378,34 +328,28 @@
     <p>Pivot Table itu ibarat asisten pribadi yang otomatis ngerangkum data buat kalian — tinggal tarik-tarik field ke tempat yang tepat, dan ringkasannya langsung muncul. Nggak perlu nulis formula sama sekali!</p>
 
     <!-- GAMBAR 6: Langkah-langkah membuat Pivot Table -->
-    <div class="img-slot ratio-wide">
-      <div class="num">6</div>
-      <div class="label">Alur 4 Langkah Membuat Pivot Table</div>
-      <div class="hint">Klik data → Insert &gt; PivotTable → Tarik field ke Rows/Values/Filters → Ringkasan muncul</div>
-      <span class="filename">gambar-6-langkah-pivot.png</span>
-    </div>
+    <figure class="fig ratio-wide">
+      <img src="images/bab1/tp3/gambar-6-langkah-pivot.png" alt="Alur 4 langkah membuat Pivot Table: Klik Data, Insert PivotTable, Tarik Field, Ringkasan Muncul">
+    </figure>
+    <p class="img-caption">Klik data → Insert &gt; PivotTable → Tarik field ke Rows/Values/Filters → Ringkasan muncul</p>
 
     <h3>Pivot Table Satu Dimensi</h3>
     <p>Dipakai kalau kalian cuma mau meringkas berdasarkan SATU kategori data, misalnya kabupaten/kota saja. Field Kabupaten/Kota ditarik ke area <strong>Rows</strong>, field Jumlah Wisatawan ditarik ke area <strong>Values</strong>, dan field Tahun ditarik ke area <strong>Filters</strong> (biar bisa difilter per tahun).</p>
 
     <!-- GAMBAR 7: Hasil Pivot Table satu dimensi -->
-    <div class="img-slot ratio-square">
-      <div class="num">7</div>
-      <div class="label">Hasil Pivot Table Satu Dimensi</div>
-      <div class="hint">Total wisatawan tiap kabupaten/kota, filter Tahun = 2024</div>
-      <span class="filename">gambar-7-pivot-1d.png</span>
-    </div>
+    <figure class="fig ratio-square">
+      <img src="images/bab1/tp3/gambar-7-pivot-1d.png" alt="Hasil Pivot Table satu dimensi: total wisatawan tiap Kabupaten/Kota dengan filter Tahun 2024">
+    </figure>
+    <p class="img-caption">Total wisatawan tiap kabupaten/kota, filter Tahun = 2024</p>
 
     <h3>Pivot Table Dua Dimensi</h3>
     <p>Kalau kalian mau ringkasan yang lebih detail — misalnya per kabupaten/kota SEKALIGUS per tahun — tinggal tambah satu field lagi ke area <strong>Columns</strong>. Field Kabupaten/Kota tetap di Rows, field Tahun dipindah ke Columns, dan field Jumlah Wisatawan tetap di Values.</p>
 
     <!-- GAMBAR 8: Hasil Pivot Table dua dimensi -->
-    <div class="img-slot ratio-square">
-      <div class="num">8</div>
-      <div class="label">Hasil Pivot Table Dua Dimensi</div>
-      <div class="hint">Tiap kabupaten/kota, tiap tahun, plus Grand Total-nya sekaligus</div>
-      <span class="filename">gambar-8-pivot-2d.png</span>
-    </div>
+    <figure class="fig ratio-square">
+      <img src="images/bab1/tp3/gambar-8-pivot-2d.png" alt="Hasil Pivot Table dua dimensi: total wisatawan tiap Kabupaten/Kota per tahun 2023 dan 2024, plus Grand Total">
+    </figure>
+    <p class="img-caption">Tiap kabupaten/kota, tiap tahun, plus Grand Total-nya sekaligus</p>
 
     <p>Enak banget, kan? Dengan sekali lihat, kalian langsung tahu Berau itu naik dari 6.000 ke 7.010, atau Nunukan yang angkanya masih paling kecil di antara semua kabupaten/kota.</p>
   </section>
